@@ -1,43 +1,36 @@
-# Astro Starter Kit: Minimal
+# Jireh Estética
 
-```sh
-pnpm create astro@latest -- --template minimal
+Sitio web informativo del enprendimiento de Nancy Jere.
+Jireh Estética es una academia y salón de belleza ubicada en San Fernando, Argentina.
+
+[![pnpm](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
+[![astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build/)
+
+## Caracteristicas del sitio web
+
+- **Diseño moderno:** Interfaz minimalista y elegante adaptada a los estandares actuales.
+- **Catálogo de servicios:** Lista detallada de todos los servicios que se ofrecen.
+- **Galería de trabajos:** Imagenes y videos de los trabajos ya realizados en el local.
+- **Optimización de SEO:** Construido con Astro para una carga ultrarápida y buen recibimiento de SEO.
+
+## Instalación local
+
+Si deseas probar el proyecto localmente sigue los siguientes pasos:
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/Kaled-Alarcon/jireh-estetica-frontend-web.git
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Instalar dependencias:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+pnpm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+3. Ejecutar el servidor de desarrollo:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+pnpm dev
+```
