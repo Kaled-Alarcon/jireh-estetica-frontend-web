@@ -3,6 +3,7 @@
 Sitio web informativo del enprendimiento de Nancy Jere.
 Jireh Estética es una academia y salón de belleza ubicada en San Fernando, Argentina.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://mit-license.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
 [![astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build/)
 
