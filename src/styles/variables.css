@@ -1,0 +1,17 @@
+:root {
+   --rounded-sm: 8px;
+   --rounded-base: 16px;
+   --rounded-large: 32px;
+   --gap: 16px;
+   --gap-cards: 32px;
+   --gap-sections: 64px;
+   --transitions: all 0.5s ease-in-out;
+
+   --title-color: #1d293d;
+   --text-color: #45556c;
+   --primary-color: #e17100;
+   --primary-hover-color: #bb4d00;
+   --secondary-color: #053345;
+   --background-color: #f8fafc;
+   --background-dark-color: #e2e8f0;
+}
