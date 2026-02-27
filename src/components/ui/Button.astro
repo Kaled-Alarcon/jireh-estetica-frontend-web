@@ -1,0 +1,69 @@
+---
+interface Props {
+   content: string;
+   secondary?: boolean;
+}
+
+const { content, secondary } = Astro.props;
+
+const className = secondary ? "secondary-button" : "button";
+---
+
+<button class={className}>
+   <span>{content}</span>
+</button>
+
+<style>
+   .button {
+      width: 100%;
+      padding: 16px 32px;
+      border: 2px solid var(--primary-color);
+      border-radius: var(--rounded-sm);
+      outline: none;
+      cursor: pointer;
+      transition: var(--transitions);
+      background-color: var(--primary-color);
+
+      &:hover {
+         border: 2px solid var(--primary-hover-color);
+         background-color: var(--primary-hover-color);
+      }
+
+      span {
+         font-size: 16px;
+         font-weight: 700;
+         color: var(--background-color);
+      }
+   }
+
+   .secondary-button {
+      width: 100%;
+      padding: 16px 32px;
+      border: 2px solid var(--background-dark-color);
+      border-radius: var(--rounded-sm);
+      outline: none;
+      cursor: pointer;
+      transition: var(--transitions);
+      background-color: transparent;
+
+      &:hover {
+         filter: brightness(80%);
+      }
+
+      span {
+         font-size: 16px;
+         font-weight: 700;
+         color: var(--text-color);
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      .button {
+         width: fit-content;
+      }
+
+      .secondary-button {
+         width: fit-content;
+      }
+   }
+</style>
