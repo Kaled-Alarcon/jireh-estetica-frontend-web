@@ -1,0 +1,13 @@
+*,
+*::before,
+*::after {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+#auto-margin {
+   width: 90%;
+   max-width: 1280px;
+   height: 100%;
+}
