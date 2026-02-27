@@ -1,0 +1,82 @@
+---
+interface Props {
+   type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+   italic?: boolean;
+}
+
+const { type, italic } = Astro.props;
+
+const Element = type;
+
+const className = italic ? "italic-style" : undefined;
+---
+
+<Element class={className}>
+   <slot />
+</Element>
+
+<style>
+   h1 {
+      font-size: 48px;
+   }
+
+   h2 {
+      font-size: 40px;
+   }
+
+   h3 {
+      font-size: 32px;
+   }
+
+   h4 {
+      font-size: 24px;
+   }
+
+   h5 {
+      font-size: 18px;
+   }
+
+   h6 {
+      font-size: 14px;
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+      line-height: 1.1;
+      font-weight: 800;
+   }
+
+   .italic-style {
+      font-style: italic;
+   }
+
+   @media screen and (min-width: 1280px) {
+      h1 {
+         font-size: 64px;
+      }
+
+      h2 {
+         font-size: 52px;
+      }
+
+      h3 {
+         font-size: 40px;
+      }
+
+      h4 {
+         font-size: 28px;
+      }
+
+      h5 {
+         font-size: 22px;
+      }
+
+      h6 {
+         font-size: 16px;
+      }
+   }
+</style>
