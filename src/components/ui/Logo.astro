@@ -10,22 +10,19 @@ const { light } = Astro.props;
 const src = light ? `${base}/jireh-estetica-logo-light.svg` : `${base}/jireh-estetica-logo.svg`;
 ---
 
-<a href={`${base}/`} id="logo">
-   <img src={src} alt="jireh estetica logo" />
+<a href={`${base}/`}>
+   <div id="logo">
+      <img src={src} alt="jireh estetica logo" />
+   </div>
 </a>
 
 <style>
    #logo {
-      img {
-         width: 140px;
-      }
-   }
+      width: fit-content;
+      height: 50px;
 
-   @media screen and (min-width: 1280px) {
-      #logo {
-         img {
-            width: 160px;
-         }
+      img {
+         height: 100%;
       }
    }
 </style>

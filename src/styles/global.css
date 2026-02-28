@@ -10,8 +10,22 @@
    font-family: "Poppins", sans-serif;
 }
 
-#auto-margin {
+button {
+   border: none;
+   outline: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+.auto-margin {
    width: 90%;
    max-width: 1280px;
    height: 100%;
+}
+
+.icon {
+   width: 20px;
+   height: 20px;
 }
