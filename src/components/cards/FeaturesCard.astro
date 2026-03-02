@@ -1,0 +1,49 @@
+---
+import { base } from "astro:config/server";
+
+import Text from "../ui/Text.astro";
+import Title from "../ui/Title.astro";
+
+interface Props {
+   iconFile: string;
+   title: string;
+   description: string;
+}
+
+const { iconFile, title, description } = Astro.props;
+---
+
+<div class="feature-card">
+   <div>
+      <img src={`${base}/icons/${iconFile}`} alt={iconFile} />
+   </div>
+   <Title type="h4">{title}</Title>
+   <Text>{description}</Text>
+</div>
+
+<style>
+   .feature-card {
+      height: fit-content;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: var(--gap-cards);
+      border-radius: var(--rounded-base);
+      background-color: var(--background-color);
+
+      div {
+         width: 72px;
+         height: 72px;
+         border-radius: var(--rounded-base);
+         display: grid;
+         place-items: center;
+         background-color: var(--background-dark-color);
+
+         img {
+            width: 32px;
+         }
+      }
+   }
+</style>
