@@ -1,0 +1,180 @@
+---
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+import Button from "../ui/Button.astro";
+---
+
+<section id="hero">
+   <div class="auto-margin">
+      <div id="hero-text">
+         <Title type="h1">Realza tu belleza, <br /> <span>forja tu futuro</span></Title>
+         <Text
+            >Descubre nuestros servicios de salón premium y nuestra academia profesional diseñada para formar a las
+            proximas especialistas en belleza con rápida salida laboral comprobada.</Text
+         >
+         <div>
+            <a href="#introduccion-academia">
+               <Button content="Introducción a la academia" />
+            </a>
+            <a href="#servicios-destacados">
+               <Button content="Servicios populares" secondary />
+            </a>
+         </div>
+      </div>
+      <div id="hero-video">
+         <video id="hero-video-presentation">
+            <source src="/jireh-estetica-frontend-web/videos/hero-presentation.mp4" type="video/mp4" />
+            Tu navegador no soporta videos.
+         </video>
+
+         <button id="hero-video-play-button">
+            <div>
+               <img src="/jireh-estetica-frontend-web/icons/play.png" alt="" />
+            </div>
+         </button>
+      </div>
+   </div>
+</section>
+
+<style>
+   #hero {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      margin-top: 100px;
+      display: grid;
+      place-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         gap: var(--gap-sections);
+
+         #hero-text {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-cards);
+
+            h1 {
+               span {
+                  color: var(--primary-color);
+               }
+            }
+
+            div {
+               display: flex;
+               flex-direction: column;
+               gap: var(--gap);
+            }
+         }
+
+         #hero-video {
+            position: relative;
+            overflow: hidden;
+
+            #hero-video-presentation {
+               width: 100%;
+               height: 100%;
+               border-radius: var(--rounded-base);
+               filter: brightness(80%);
+            }
+
+            #hero-video-play-button {
+               width: 100%;
+               height: 100%;
+               border-radius: var(--rounded-base);
+               position: absolute;
+               top: 0;
+               left: 0;
+               cursor: pointer;
+               background-color: transparent;
+
+               div {
+                  width: 80px;
+                  height: 80px;
+                  border-radius: 100%;
+                  display: grid;
+                  place-items: center;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  background-color: var(--background-color);
+
+                  img {
+                     width: 40px;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #hero {
+         height: 840px;
+         margin-top: 120px;
+
+         .auto-margin {
+            flex-direction: row;
+
+            #hero-text {
+               width: 60%;
+               height: 100%;
+               justify-content: center;
+
+               p {
+                  max-width: 640px;
+               }
+
+               div {
+                  flex-direction: row;
+               }
+            }
+
+            #hero-video {
+               width: 40%;
+               height: 100%;
+
+               #hero-video-presentation {
+                  width: 100%;
+                  height: 700px;
+                  object-fit: cover;
+               }
+            }
+         }
+      }
+   }
+</style>
+
+<script>
+   let videoIsPlayed = false;
+
+   const heroVideo = document.getElementById("hero-video-presentation")!;
+   const heroPlayButton = document.getElementById("hero-video-play-button")!;
+
+   heroVideo.addEventListener("ended", () => {
+      heroVideo.currentTime = 0;
+
+      if (videoIsPlayed === true) {
+         heroVideo.style.filter = "brightness(80%)";
+         heroPlayButton.style.opacity = "100%";
+      }
+   });
+
+   heroPlayButton.addEventListener("click", () => {
+      if (videoIsPlayed === true) {
+         videoIsPlayed = false;
+         heroVideo.pause();
+         heroVideo.style.filter = "brightness(80%)";
+         heroPlayButton.style.opacity = "100%";
+      } else {
+         videoIsPlayed = true;
+         heroVideo.play();
+         heroVideo.style.filter = "brightness(100%)";
+         heroPlayButton.style.opacity = "0%";
+      }
+   });
+</script>
