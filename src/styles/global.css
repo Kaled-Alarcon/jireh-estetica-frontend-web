@@ -10,6 +10,38 @@
    font-family: "Poppins", sans-serif;
 }
 
+input {
+   height: 60px;
+   padding: 0 16px;
+   border: none;
+   border-radius: var(--rounded-sm);
+   outline: none;
+   font-size: 16px;
+   background-color: var(--background-dark-color);
+}
+
+select {
+   height: 60px;
+   padding: 0 16px;
+   border: none;
+   border-radius: var(--rounded-sm);
+   outline: none;
+   font-size: 16px;
+   background-color: var(--background-dark-color);
+   appearance: none;
+}
+
+textarea {
+   height: 120px;
+   padding: 16px;
+   border: none;
+   border-radius: var(--rounded-sm);
+   outline: none;
+   font-size: 16px;
+   resize: none;
+   background-color: var(--background-dark-color);
+}
+
 button {
    border: none;
    outline: none;

@@ -1,0 +1,165 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+import Button from "../ui/Button.astro";
+---
+
+<section id="contact-us">
+   <div class="auto-margin">
+      <div id="contact-us-text">
+         <Title type="h2">Contáctanos</Title>
+         <Text
+            >¿Tenés dudas sobre nuestros cursos o querés agendar una cita? Escríbenos y te resolveremos la duda en
+            breve.</Text
+         >
+
+         <div class="contact-us-text-feature">
+            <div class="contact-us-text-feature-icon-container">
+               <img src={`${base}/icons/email.png`} alt="email" />
+            </div>
+            <div class="contact-us-text-feature-text">
+               <span>CORREO</span>
+               <Title type="h6">info@jirehestetica.com</Title>
+            </div>
+         </div>
+
+         <div class="contact-us-text-feature">
+            <div class="contact-us-text-feature-icon-container">
+               <img src={`${base}/icons/phone.png`} alt="email" />
+            </div>
+            <div class="contact-us-text-feature-text">
+               <span>TELÉFONO</span>
+               <Title type="h6">+54 11 1234 5678</Title>
+            </div>
+         </div>
+
+         <div class="contact-us-text-feature">
+            <div class="contact-us-text-feature-icon-container">
+               <img src={`${base}/icons/location.png`} alt="email" />
+            </div>
+            <div class="contact-us-text-feature-text">
+               <span>UBICACIÓN</span>
+               <Title type="h6">Av. principal 123, San Fernando, Buenos Aires, Argentina.</Title>
+            </div>
+         </div>
+      </div>
+      <div id="contact-us-form">
+         <div class="input-container">
+            <label for="input-fullname">Nombre completo</label>
+            <input type="text" name="input-fullname" id="input-fullname" placeholder="Ej: María Lopez" />
+         </div>
+         <div class="input-container">
+            <label for="input-email">Correo electrónico</label>
+            <input type="text" name="input-email" id="input-email" placeholder="Ej: marialopez@gmail.com" />
+         </div>
+         <div class="input-container">
+            <label for="input-subject">Asunto</label>
+            <select name="input-subject" id="input-subject">
+               <option value="-" selected hidden>-Selecciona un asunto-</option>
+               <option value="Información de cursos">Información de cursos</option>
+               <option value="Agendar cita para servicio">Agendar cita para servicio</option>
+               <option value="Reseña sobre curso o servicio">Reseña sobre curso o servicio</option>
+               <option value="Queja por atención">Queja por atención</option>
+               <option value="Otro motivo">Otro motivo</option>
+            </select>
+         </div>
+         <div class="input-container">
+            <label for="input-message">Mensaje</label>
+            <textarea name="input-message" id="input-message" placeholder="Escribe tu mensaje aquí..."></textarea>
+         </div>
+         <Button content="Enviar mensaje" />
+      </div>
+   </div>
+</section>
+
+<style>
+   #contact-us {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: grid;
+      place-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         gap: var(--gap-cards);
+
+         #contact-us-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-cards);
+
+            .contact-us-text-feature {
+               display: flex;
+               justify-content: flex-start;
+               align-items: center;
+               gap: var(--gap);
+
+               .contact-us-text-feature-icon-container {
+                  width: 60px;
+                  height: 60px;
+                  border-radius: var(--rounded-sm);
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                  background-color: var(--background-dark-color);
+
+                  img {
+                     width: 28px;
+                  }
+               }
+
+               .contact-us-text-feature-text {
+                  span {
+                     font-size: 14px;
+                     font-weight: 600;
+                     opacity: 50%;
+                  }
+               }
+            }
+         }
+
+         #contact-us-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-cards);
+
+            .input-container {
+               display: flex;
+               flex-direction: column;
+               gap: calc(var(--gap) / 2);
+
+               label {
+                  font-weight: 500;
+               }
+            }
+
+            button {
+               width: 100%;
+            }
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #contact-us {
+         .auto-margin {
+            flex-direction: row;
+            gap: var(--gap-sections);
+
+            #contact-us-text {
+               width: 50%;
+               height: 100%;
+            }
+
+            #contact-us-form {
+               width: 50%;
+               height: 100%;
+            }
+         }
+      }
+   }
+</style>
