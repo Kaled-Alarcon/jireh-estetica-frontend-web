@@ -1,4 +1,6 @@
 ---
+import { base } from "astro:config/server";
+
 import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
 import Button from "../ui/Button.astro";
@@ -23,13 +25,13 @@ import Button from "../ui/Button.astro";
       </div>
       <div id="hero-video">
          <video id="hero-video-presentation">
-            <source src="/jireh-estetica-frontend-web/videos/hero-presentation.mp4" type="video/mp4" />
+            <source src={`${base}/videos/hero-presentation.mp4`} type="video/mp4" />
             Tu navegador no soporta videos.
          </video>
 
          <button id="hero-video-play-button">
             <div>
-               <img src="/jireh-estetica-frontend-web/icons/play.png" alt="" />
+               <img src=`${base}/icons/play.png` alt="play video" />
             </div>
          </button>
       </div>
