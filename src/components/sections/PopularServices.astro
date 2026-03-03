@@ -1,0 +1,84 @@
+---
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+import ServiceCard from "../cards/ServiceCard.astro";
+---
+
+<section id="servicios-destacados">
+   <div class="auto-margin">
+      <div id="popular-services-head">
+         <Title type="h2">Servicios <span>destacados</span></Title>
+         <Text>Tratamientos especializados para sacar lo especial de vos.</Text>
+      </div>
+      <div id="popular-services-grid">
+         <ServiceCard
+            videoFile=""
+            title="Nombre del servicio"
+            description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+            price="45.000"
+         />
+         <ServiceCard
+            videoFile=""
+            title="Nombre del servicio"
+            description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+            price="45.000"
+         />
+         <ServiceCard
+            videoFile=""
+            title="Nombre del servicio"
+            description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+            price="45.000"
+         />
+      </div>
+   </div>
+</section>
+
+<style>
+   #servicios-destacados {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: grid;
+      place-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         gap: var(--gap-cards);
+
+         #popular-services-head {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            h2 {
+               span {
+                  color: var(--primary-color);
+               }
+            }
+         }
+
+         #popular-services-grid {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(1, 1fr);
+            gap: var(--gap-cards);
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #servicios-destacados {
+         .auto-margin {
+            #popular-services-head {
+               align-items: center;
+            }
+
+            #popular-services-grid {
+               grid-template-rows: repeat(1, 1fr);
+               grid-template-columns: repeat(3, 1fr);
+            }
+         }
+      }
+   }
+</style>
