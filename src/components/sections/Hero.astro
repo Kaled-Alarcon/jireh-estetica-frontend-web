@@ -24,6 +24,8 @@ import Button from "../ui/Button.astro";
          </div>
       </div>
       <div id="hero-video">
+         <!-- <div></div> -->
+
          <video id="hero-video-presentation">
             <source src={`${base}/videos/hero-presentation.mp4`} type="video/mp4" />
             Tu navegador no soporta videos.
@@ -76,7 +78,7 @@ import Button from "../ui/Button.astro";
             position: relative;
             overflow: hidden;
 
-            #hero-video-presentation {
+            video {
                width: 100%;
                height: 100%;
                border-radius: var(--rounded-base);
@@ -120,6 +122,7 @@ import Button from "../ui/Button.astro";
          margin-top: 120px;
 
          .auto-margin {
+            height: 712px;
             flex-direction: row;
 
             #hero-text {
@@ -139,11 +142,15 @@ import Button from "../ui/Button.astro";
             #hero-video {
                width: 40%;
                height: 100%;
+               overflow: hidden;
 
-               #hero-video-presentation {
+               video {
                   width: 100%;
-                  height: 700px;
+                  height: 100%;
+                  display: block;
                   object-fit: cover;
+                  object-position: center;
+                  overflow: hidden;
                }
             }
          }
@@ -163,6 +170,7 @@ import Button from "../ui/Button.astro";
       if (videoIsPlayed === true) {
          heroVideo.style.filter = "brightness(80%)";
          heroPlayButton.style.opacity = "100%";
+         videoIsPlayed = false;
       }
    });
 
