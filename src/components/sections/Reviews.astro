@@ -1,0 +1,204 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import ReviewCard from "../cards/ReviewCard.astro";
+---
+
+<section id="reviews">
+   <div class="auto-margin">
+      <div id="reviews-head">
+         <Title type="h2">Lo que dicen nuestros <span>alumnos y clientes</span></Title>
+      </div>
+      <div id="reviews-cards-container">
+         <div id="reviews-cards-container-prev-btn">
+            <img src={`${base}/icons/right-arrow.png`} alt="left arrow" />
+         </div>
+         <div id="reviews-cards-container-next-btn">
+            <img src={`${base}/icons/right-arrow.png`} alt="right arrow" />
+         </div>
+         <ReviewCard
+            videoFile=""
+            review="Descripción de la review"
+            reviewerName="María Lopez"
+            reviewerStatus="EGRESADA DE LA ACADEMIA"
+         />
+         <ReviewCard
+            videoFile=""
+            review="Descripción de la review"
+            reviewerName="María Lopez"
+            reviewerStatus="EGRESADA DE LA ACADEMIA"
+         />
+         <ReviewCard
+            videoFile=""
+            review="Descripción de la review"
+            reviewerName="María Lopez"
+            reviewerStatus="EGRESADA DE LA ACADEMIA"
+         />
+         <ReviewCard
+            videoFile=""
+            review="Descripción de la review"
+            reviewerName="María Lopez"
+            reviewerStatus="EGRESADA DE LA ACADEMIA"
+         />
+         <ReviewCard
+            videoFile=""
+            review="Descripción de la review"
+            reviewerName="María Lopez"
+            reviewerStatus="EGRESADA DE LA ACADEMIA"
+         />
+      </div>
+   </div>
+</section>
+
+<style>
+   #reviews {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-dark-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         gap: var(--gap-cards);
+         position: relative;
+
+         #reviews-head {
+            h2 {
+               span {
+                  color: var(--primary-color);
+               }
+            }
+         }
+
+         #reviews-cards-container {
+            display: flex;
+            gap: var(--gap);
+            position: static;
+            overflow-y: hidden;
+            overflow-x: auto;
+
+            &::-webkit-scrollbar {
+               display: none;
+            }
+
+            #reviews-cards-container-prev-btn {
+               width: 60px;
+               height: 60px;
+               border-radius: var(--rounded-base);
+               display: none;
+               justify-content: center;
+               align-items: center;
+               position: absolute;
+               top: 65%;
+               left: 54px;
+               transform: translate(-50%, -50%);
+               cursor: pointer;
+               box-shadow: 4px 4px 8px #11111122;
+               background-color: var(--primary-color);
+
+               &:hover {
+                  background-color: var(--primary-hover-color);
+               }
+
+               img {
+                  width: 24px;
+                  filter: invert();
+                  transform: rotateY(180deg);
+               }
+            }
+
+            #reviews-cards-container-next-btn {
+               width: 60px;
+               height: 60px;
+               border-radius: var(--rounded-base);
+               display: none;
+               justify-content: center;
+               align-items: center;
+               position: absolute;
+               top: 65%;
+               right: 0;
+               transform: translate(-50%, -50%);
+               cursor: pointer;
+               transition: var(--transitions);
+               box-shadow: 4px 4px 8px #11111122;
+               background-color: var(--primary-color);
+
+               &:hover {
+                  background-color: var(--primary-hover-color);
+               }
+
+               img {
+                  width: 24px;
+                  filter: invert();
+               }
+            }
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #reviews {
+         .auto-margin {
+            #reviews-head {
+               display: flex;
+               flex-direction: column;
+               gap: var(--gap-cards);
+               align-items: center;
+
+               h2 {
+                  max-width: 800px;
+                  text-align: center;
+               }
+            }
+
+            #reviews-cards-container {
+               #reviews-cards-container-prev-btn {
+                  display: flex;
+               }
+
+               #reviews-cards-container-next-btn {
+                  display: flex;
+               }
+            }
+         }
+      }
+   }
+</style>
+
+<script>
+   const reviewsCardsContainer = document.getElementById("reviews-cards-container")!;
+   const reviewsNextPageBtn = document.getElementById("reviews-cards-container-next-btn")!;
+   const reviewsPrevPageBtn = document.getElementById("reviews-cards-container-prev-btn")!;
+
+   reviewsPrevPageBtn.style.display = "none";
+
+   reviewsCardsContainer.addEventListener("scroll", () => {
+      if (window.innerWidth < 1280) return;
+
+      const { scrollLeft, clientWidth, scrollWidth } = reviewsCardsContainer;
+
+      if (scrollLeft === 0) {
+         reviewsPrevPageBtn.style.display = "none";
+      } else {
+         reviewsPrevPageBtn.style.display = "flex";
+      }
+
+      if (scrollLeft + clientWidth >= scrollWidth - 1) {
+         reviewsNextPageBtn.style.display = "none";
+      } else {
+         reviewsNextPageBtn.style.display = "flex";
+      }
+   });
+
+   reviewsNextPageBtn.addEventListener("click", () => {
+      reviewsCardsContainer.scrollTo({ left: reviewsCardsContainer.scrollLeft + 431, behavior: "smooth" });
+   });
+
+   reviewsPrevPageBtn.addEventListener("click", () => {
+      reviewsCardsContainer.scrollTo({ left: reviewsCardsContainer.scrollLeft - 431, behavior: "smooth" });
+   });
+</script>

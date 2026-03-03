@@ -1,0 +1,81 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+   videoFile: string;
+   review: string;
+   reviewerName: string;
+   reviewerStatus: "EGRESADA DE LA ACADEMIA" | "CLIENTE DEL SALÓN";
+}
+
+const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
+---
+
+<div class="review-card">
+   {
+      videoFile ? (
+         <video controls>
+            <source src={`${base}/videos/${videoFile}`} type="video/mp4" />
+         </video>
+      ) : (
+         <Text>"{review}"</Text>
+      )
+   }
+
+   <div>
+      <Title type="h6">{reviewerName}</Title>
+      <span>{reviewerStatus}</span>
+   </div>
+</div>
+
+<style>
+   .review-card {
+      width: 340px;
+      aspect-ratio: 1.25/1;
+      padding: var(--gap);
+      border-radius: var(--rounded-base);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-shrink: 0;
+      background-color: var(--background-color);
+
+      video {
+         width: 100%;
+         aspect-ratio: 16/9;
+         border-radius: var(--rounded-base);
+         object-fit: cover;
+         object-position: center;
+         overflow: hidden;
+      }
+
+      p {
+         font-size: 18px;
+         font-style: italic;
+      }
+
+      > div {
+         span {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 50%;
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      .review-card {
+         width: 415px;
+         aspect-ratio: 16/12;
+         padding: var(--gap-cards);
+
+         video {
+            aspect-ratio: 16/8;
+         }
+      }
+   }
+</style>
