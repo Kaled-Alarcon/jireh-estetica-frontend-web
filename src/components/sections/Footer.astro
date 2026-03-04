@@ -1,0 +1,180 @@
+---
+import { base } from "astro:config/server";
+
+import Logo from "../ui/Logo.astro";
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+---
+
+<footer id="footer">
+   <div class="auto-margin">
+      <div id="footer-head">
+         <Logo light />
+         <Text>Elevando los estándares de belleza y educación profesional desde 20XX.</Text>
+      </div>
+      <div id="footer-links">
+         <Title type="h5">Enlaces</Title>
+         <div>
+            <a href={`${base}/`}>Inicio</a>
+            <a href={`${base}/academia`}>Academia</a>
+            <a href={`${base}/servicios`}>Servicios</a>
+            <a href={`${base}/nosotros`}>Sobre nosotros</a>
+         </div>
+      </div>
+      <div id="footer-info">
+         <Title type="h5">Atención</Title>
+         <div>
+            <p>Lun-Vie: De XX a XX hs.</p>
+            <p>Sábado: De XX a XX hs.</p>
+            <p>Domingo: Cerrado.</p>
+         </div>
+      </div>
+      <div id="footer-socials">
+         <Title type="h5">Redes sociales</Title>
+         <div></div>
+      </div>
+   </div>
+</footer>
+
+<div id="footer-lic">
+   <div class="auto-margin">
+      <Text>© 2026 Jireh Estética. Todos los derechos reservados.</Text>
+   </div>
+</div>
+
+<style>
+   #footer {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--footer-background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         gap: var(--gap-cards);
+
+         #footer-head {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            p {
+               color: var(--background-dark-color);
+            }
+         }
+
+         #footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            h5 {
+               color: var(--background-color);
+            }
+
+            div {
+               display: flex;
+               flex-direction: column;
+               gap: calc(var(--gap) / 2);
+
+               a {
+                  transition: var(--transitions);
+                  color: var(--background-dark-color);
+
+                  &:hover {
+                     color: var(--primary-color);
+                  }
+               }
+            }
+         }
+
+         #footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            h5 {
+               color: var(--background-color);
+            }
+
+            div {
+               display: flex;
+               flex-direction: column;
+               gap: calc(var(--gap) / 2);
+
+               p {
+                  color: var(--background-dark-color);
+
+                  &:nth-child(3) {
+                     color: var(--primary-color);
+                  }
+               }
+            }
+         }
+
+         #footer-socials {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            h5 {
+               color: var(--background-color);
+            }
+         }
+      }
+   }
+
+   #footer-lic {
+      height: fit-content;
+      padding-bottom: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--footer-background-color);
+
+      .auto-margin {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+
+         p {
+            font-size: 16px;
+            text-align: center;
+            opacity: 50%;
+            color: var(--background-dark-color);
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #footer {
+         .auto-margin {
+            flex-direction: row;
+            justify-content: space-between;
+
+            #footer-head {
+               width: fit-content;
+
+               p {
+                  max-width: 300px;
+               }
+            }
+
+            #footer-links {
+               width: fit-content;
+            }
+
+            #footer-info {
+               width: fit-content;
+            }
+
+            #footer-socials {
+               width: fit-content;
+            }
+         }
+      }
+   }
+</style>
