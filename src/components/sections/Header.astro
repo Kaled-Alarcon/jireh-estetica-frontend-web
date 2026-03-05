@@ -79,6 +79,7 @@ import Title from "../ui/Title.astro";
       left: 0;
       z-index: 10;
       backdrop-filter: blur(8px);
+      transition: var(--transitions);
       background-color: var(--background-translucent-color);
 
       .auto-margin {
@@ -172,6 +173,7 @@ import Title from "../ui/Title.astro";
 <script>
    let headerMobileMenuVisible = false;
 
+   const header = document.getElementById("header")!;
    const headerMobileMenu = document.getElementById("header-mobile-menu")!;
    const headerMobileMenuButtons = [...document.getElementsByClassName("header-mobile-menu-button")];
 
@@ -196,4 +198,18 @@ import Title from "../ui/Title.astro";
 
       headerMobileMenu.classList.remove("header-mobile-menu-visible");
    };
+
+   window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+
+      const clientTop = window.innerHeight;
+
+      const scrollHeight = document.body.scrollHeight;
+
+      if (scrollTop + clientTop >= scrollHeight) {
+         header.style.top = "-100%";
+      } else {
+         header.style.top = "0";
+      }
+   });
 </script>
