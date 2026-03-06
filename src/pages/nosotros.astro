@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 
 import MinimalHero from "../components/sections/MinimalHero.astro";
+import OurOrigin from "../components/sections/OurOrigin.astro";
 ---
 
 <MainLayout title="Sobre nosotros">
@@ -10,5 +11,10 @@ import MinimalHero from "../components/sections/MinimalHero.astro";
       emphasisTitle="Pasión por la belleza"
       description="Desde nuestros inicios nos hemos dedicado a transformar vidas a través del arte de la estética y la excelencia educativa."
       imageFile="nosotros-mhero-banner.jpeg"
+   />
+   <OurOrigin
+      title="¿Cómo nació este proyecto?"
+      historyParagraphs={["-Párrafo de texto-", "-Párrafo de texto-", "-Párrafo de texto-"]}
+      imageFile="our-origin-image.jpeg"
    />
 </MainLayout>

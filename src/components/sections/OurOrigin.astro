@@ -1,0 +1,82 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+   title: string;
+   historyParagraphs: string[];
+   imageFile: string;
+}
+
+const { title, historyParagraphs, imageFile } = Astro.props;
+
+const imageUrl = `${base}images/${imageFile}`;
+---
+
+<section id="our-origin">
+   <div class="auto-margin">
+      <div id="our-origin-image" style={`background-image: url(${imageUrl});`}></div>
+      <div id="our-origin-text">
+         <Title type="h2">{title}</Title>
+         <div>
+            {historyParagraphs.map((paragraph) => <Text>{paragraph}</Text>)}
+         </div>
+      </div>
+   </div>
+</section>
+
+<style>
+   #our-origin {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column-reverse;
+         align-items: stretch;
+         gap: var(--gap-sections);
+
+         #our-origin-image {
+            height: 400px;
+            border-radius: var(--rounded-base);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+         }
+
+         #our-origin-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-cards);
+
+            > div {
+               display: flex;
+               flex-direction: column;
+               gap: var(--gap);
+            }
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #our-origin {
+         .auto-margin {
+            flex-direction: row;
+
+            #our-origin-image {
+               width: 50%;
+            }
+
+            #our-origin-text {
+               width: 50%;
+            }
+         }
+      }
+   }
+</style>
