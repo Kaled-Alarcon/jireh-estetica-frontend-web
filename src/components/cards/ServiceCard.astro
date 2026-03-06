@@ -20,13 +20,13 @@ const { videoFile, imageFile, title, description, price } = Astro.props;
       {
          videoFile && (
             <video controls>
-               <source src={`${base}/videos/${videoFile}`} type="video/mp4" />
+               <source src={`${base}videos/${videoFile}`} type="video/mp4" />
                Tu navegador no acepta videos.
             </video>
          )
       }
 
-      {imageFile && <div style={`background-image: url(${base}/images/${imageFile});`} />}
+      {imageFile && <div style={`background-image: url(${base}images/${imageFile});`} />}
    </div>
    <Title type="h4">{title}</Title>
    <Text>{description}</Text>
