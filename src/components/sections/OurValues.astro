@@ -1,0 +1,77 @@
+---
+import Title from "../ui/Title.astro";
+import OurValuesCard from "../cards/OurValuesCard.astro";
+---
+
+<div id="our-values">
+   <div class="auto-margin">
+      <div id="our-values-head">
+         <Title type="h2">Nuestros valores fundamentales</Title>
+      </div>
+      <div id="our-values-cards">
+         <OurValuesCard
+            iconFile="check-primary.png"
+            title="Integridad"
+            description="Actuamos con honestidad y transparencia en cada tratamiento y curso que impartimos."
+         />
+         <OurValuesCard
+            iconFile="light-primary.png"
+            title="Innovación"
+            description="Estamos a la vanguardia de las técnicas globales y tendencias del mercado estético."
+         />
+         <OurValuesCard
+            iconFile="love-primary.png"
+            title="Dedicación"
+            description="Ponemos nuestro corazón en cada detalle para asegurar resultados extraordinarios."
+         />
+         <OurValuesCard
+            iconFile="medal-primary.png"
+            title="Excelencia"
+            description="No nos conformamos con menos que lo mejor en calidad de servicio y educación."
+         />
+      </div>
+   </div>
+</div>
+
+<style>
+   #our-values {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         align-items: stretch;
+         gap: var(--gap-sections);
+
+         #our-values-cards {
+            height: fit-content;
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap-cards);
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #our-values {
+         .auto-margin {
+            #our-values-head {
+               h2 {
+                  text-align: center;
+               }
+            }
+
+            #our-values-cards {
+               grid-template-rows: repeat(1, 1fr);
+               grid-template-columns: repeat(4, 1fr);
+            }
+         }
+      }
+   }
+</style>
