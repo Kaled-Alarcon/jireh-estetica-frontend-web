@@ -2,8 +2,8 @@
 import { base } from "astro:config/server";
 
 import Logo from "../ui/Logo.astro";
-import Button from "../ui/Button.astro";
 import Title from "../ui/Title.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <header id="header">
@@ -11,19 +11,19 @@ import Title from "../ui/Title.astro";
       <Logo />
 
       <nav id="header-nav">
-         <a href={`${base}/`}>
+         <a href={`${base}`}>
             <Title type="h6">Inicio</Title>
          </a>
 
-         <a href={`${base}/academia`}>
+         <a href={`${base}academia`}>
             <Title type="h6">Academia</Title>
          </a>
 
-         <a href={`${base}/servicios`}>
+         <a href={`${base}servicios`}>
             <Title type="h6">Servicios</Title>
          </a>
 
-         <a href={`${base}/nosotros`}>
+         <a href={`${base}nosotros`}>
             <Title type="h6">Sobre nosotros</Title>
          </a>
 
@@ -33,7 +33,7 @@ import Title from "../ui/Title.astro";
       </nav>
 
       <button class="header-mobile-menu-button">
-         <img class="icon" src="/jireh-estetica-frontend-web/icons/menu.png" alt="open header mobile menu" />
+         <img class="icon" src={`${base}icons/menu.png`} alt="open header mobile menu" />
       </button>
    </div>
 </header>
@@ -42,19 +42,19 @@ import Title from "../ui/Title.astro";
    <Logo light />
 
    <div>
-      <a href={`${base}/`}>
+      <a href={`${base}`}>
          <Button content="Inicio" secondary />
       </a>
 
-      <a href={`${base}/academia`}>
+      <a href={`${base}academia`}>
          <Button content="Academia" secondary />
       </a>
 
-      <a href={`${base}/servicios`}>
+      <a href={`${base}servicios`}>
          <Button content="Servicios" secondary />
       </a>
 
-      <a href={`${base}/nosotros`}>
+      <a href={`${base}nosotros`}>
          <Button content="Sobre nosotros" secondary />
       </a>
 
@@ -64,7 +64,7 @@ import Title from "../ui/Title.astro";
    </div>
 
    <button class="header-mobile-menu-button">
-      <img class="icon" src="/jireh-estetica-frontend-web/icons/cross.png" alt="close header mobile menu" />
+      <img class="icon" src={`${base}icons/cross.png`} alt="close header mobile menu" />
    </button>
 </div>
 

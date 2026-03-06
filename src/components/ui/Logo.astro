@@ -7,10 +7,10 @@ interface Props {
 
 const { light } = Astro.props;
 
-const src = light ? `${base}/jireh-estetica-logo-light.svg` : `${base}/jireh-estetica-logo.svg`;
+const src = light ? `${base}jireh-estetica-logo-light.svg` : `${base}jireh-estetica-logo.svg`;
 ---
 
-<a href={`${base}/`}>
+<a href={`${base}`}>
    <div id="logo">
       <img src={src} alt="jireh estetica logo" />
    </div>
