@@ -15,25 +15,23 @@ import Button from "../ui/Button.astro";
             proximas especialistas en belleza con rápida salida laboral comprobada.</Text
          >
          <div>
-            <a href="#introduccion-academia">
+            <a href={`${base}#introduccion-academia`}>
                <Button content="Introducción a la academia" />
             </a>
-            <a href="#servicios-destacados">
+            <a href={`${base}#servicios-destacados`}>
                <Button content="Servicios populares" secondary />
             </a>
          </div>
       </div>
       <div id="hero-video">
-         <!-- <div></div> -->
-
          <video id="hero-video-presentation">
-            <source src={`${base}/videos/hero-presentation.mp4`} type="video/mp4" />
+            <source src={`${base}videos/hero-presentation.mp4`} type="video/mp4" />
             Tu navegador no soporta videos.
          </video>
 
          <button id="hero-video-play-button">
             <div>
-               <img src=`${base}/icons/play.png` alt="play video" />
+               <img src=`${base}icons/play.png` alt="play video" />
             </div>
          </button>
       </div>
