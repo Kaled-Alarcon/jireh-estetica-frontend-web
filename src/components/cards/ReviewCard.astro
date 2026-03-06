@@ -5,8 +5,8 @@ import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
 
 interface Props {
-   videoFile: string;
-   review: string;
+   videoFile?: string;
+   review?: string;
    reviewerName: string;
    reviewerStatus: "EGRESADA DE LA ACADEMIA" | "CLIENTE DEL SALÓN";
 }
@@ -18,7 +18,7 @@ const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
    {
       videoFile ? (
          <video controls>
-            <source src={`${base}/videos/${videoFile}`} type="video/mp4" />
+            <source src={`${base}videos/${videoFile}`} type="video/mp4" />
          </video>
       ) : (
          <Text>"{review}"</Text>
@@ -71,7 +71,7 @@ const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
       .review-card {
          width: 415px;
          aspect-ratio: 16/12;
-         padding: var(--gap-cards);
+         padding: calc(var(--gap-cards) * 0.75);
 
          video {
             aspect-ratio: 16/8;
