@@ -1,0 +1,82 @@
+---
+import Title from "../ui/Title.astro";
+import YourInstructorsCard from "../cards/YourInstructorsCard.astro";
+---
+
+<section id="your-instructors">
+   <div class="auto-margin">
+      <div id="your-instructors-head">
+         <Title type="h2">Conoce a tus instructores</Title>
+      </div>
+      <div id="your-instructors-cards">
+         <YourInstructorsCard
+            instructorImageFile="instructor-maria-image.jpeg"
+            instructor={{
+               name: "María Lopez",
+               job: "Profesional en manicuría",
+               description:
+                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab harum nisi maxime? Expedita voluptatum obcaecati sunt!",
+            }}
+         />
+         <YourInstructorsCard
+            instructorImageFile="instructor-maria-image.jpeg"
+            instructor={{
+               name: "María Lopez",
+               job: "Profesional en manicuría",
+               description:
+                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab harum nisi maxime? Expedita voluptatum obcaecati sunt!",
+            }}
+         />
+         <YourInstructorsCard
+            instructorImageFile="instructor-maria-image.jpeg"
+            instructor={{
+               name: "María Lopez",
+               job: "Profesional en manicuría",
+               description:
+                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab harum nisi maxime? Expedita voluptatum obcaecati sunt!",
+            }}
+         />
+      </div>
+   </div>
+</section>
+
+<style>
+   #your-instructors {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: flex;
+         flex-direction: column;
+         align-items: stretch;
+         gap: var(--gap-sections);
+
+         #your-instructors-cards {
+            display: grid;
+            grid-template-rows: repeat(auto, 1fr);
+            grid-template-columns: repeat(1, 1fr);
+            gap: var(--gap-cards);
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #your-instructors {
+         .auto-margin {
+            #your-instructors-head {
+               h2 {
+                  text-align: center;
+               }
+            }
+
+            #your-instructors-cards {
+               grid-template-columns: repeat(3, 1fr);
+            }
+         }
+      }
+   }
+</style>

@@ -1,0 +1,57 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+   instructorImageFile: string;
+   instructor: {
+      name: string;
+      job: string;
+      description: string;
+   };
+}
+
+const { instructorImageFile, instructor } = Astro.props;
+
+const imageUrl = `${base}images/${instructorImageFile}`;
+---
+
+<div class="your-instructors-card">
+   <div class="your-instructors-card-image" style={`background-image: url(${imageUrl});`}></div>
+   <div class="your-instructors-card-text">
+      <Title type="h5">{instructor.name}</Title>
+      <Title type="h6">{instructor.job}</Title>
+      <Text>{instructor.description}</Text>
+   </div>
+</div>
+
+<style>
+   .your-instructors-card {
+      height: 560px;
+      padding: var(--gap);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+
+      .your-instructors-card-image {
+         height: 360px;
+         border-radius: var(--rounded-base);
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+      }
+
+      .your-instructors-card-text {
+         display: flex;
+         flex-direction: column;
+         gap: calc(var(--gap) / 2);
+
+         h6 {
+            color: var(--primary-color);
+         }
+      }
+   }
+</style>
