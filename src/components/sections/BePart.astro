@@ -1,0 +1,92 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+import Button from "../ui/Button.astro";
+---
+
+<div id="be-part">
+   <div class="auto-margin">
+      <div id="be-part-banner">
+         <Title type="h3">Sé parte de nuestra historia</Title>
+         <Text
+            >Ya sea que busques transformar tu imagen o iniciar una carrera exitosa, en Jireh tenemos un lugar para ti.</Text
+         >
+         <div id="be-part-banner-buttons">
+            <a href={`${base}academia`}>
+               <Button content="Ver cursos" />
+            </a>
+            <Button content="Agendar cita" secondary />
+         </div>
+      </div>
+   </div>
+</div>
+
+<style>
+   #be-part {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         #be-part-banner {
+            height: fit-content;
+            padding: var(--gap-sections) var(--gap-cards);
+            border-radius: var(--rounded-large);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--gap-cards);
+            background-color: var(--secondary-color);
+
+            h3 {
+               text-align: center;
+               color: var(--background-color);
+            }
+
+            p {
+               max-width: 720px;
+               font-size: 20px;
+               text-align: center;
+               opacity: 90%;
+               color: var(--background-dark-color);
+            }
+
+            #be-part-banner-buttons {
+               width: 100%;
+               display: flex;
+               flex-direction: column;
+               gap: var(--gap);
+
+               button {
+                  &:nth-child(2) {
+                     span {
+                        color: var(--background-dark-color);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #be-part {
+         .auto-margin {
+            #be-part-banner {
+               height: 400px;
+
+               #be-part-banner-buttons {
+                  width: fit-content;
+                  flex-direction: row;
+               }
+            }
+         }
+      }
+   }
+</style>
