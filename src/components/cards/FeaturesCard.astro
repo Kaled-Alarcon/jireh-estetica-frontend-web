@@ -1,8 +1,8 @@
 ---
 import { base } from "astro:config/server";
 
-import Text from "../ui/Text.astro";
 import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
 
 interface Props {
    iconFile: string;
@@ -15,7 +15,7 @@ const { iconFile, title, description } = Astro.props;
 
 <div class="feature-card">
    <div>
-      <img src={`${base}/icons/${iconFile}`} alt={iconFile} />
+      <img src={`${base}icons/${iconFile}`} alt={iconFile} />
    </div>
    <Title type="h4">{title}</Title>
    <Text>{description}</Text>
