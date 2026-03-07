@@ -1,5 +1,14 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+
+import MinimalHero from "../components/sections/MinimalHero.astro";
 ---
 
-<MainLayout title="Nuestros servicios" />
+<MainLayout title="Nuestros servicios">
+   <MinimalHero
+      title="Nuestros servicios de "
+      emphasisTitle="salón"
+      description="Cuidado personalizado y técnicas de vanguardia para resaltar tu belleza natural en un ambiente de total relajación."
+      imageFile="our-origin-image.jpeg"
+   />
+</MainLayout>
