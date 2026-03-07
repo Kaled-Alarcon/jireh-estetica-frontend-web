@@ -1,0 +1,123 @@
+---
+import { base } from "astro:config/server";
+
+interface Props {
+   id?: string;
+   videoFile: string;
+   width: string;
+   height: string;
+}
+
+const { id, videoFile, width, height } = Astro.props;
+
+const videoUrl = `${base}videos/${videoFile}`;
+
+const videoContainerStyles = `width: ${width}; height: ${height};`;
+---
+
+<div class="video-player-container" id={id} data-video-player style={videoContainerStyles}>
+   <video class="video-player">
+      <source src={videoUrl} type="video/mp4" />
+      Tu navegador no soporta videos.
+   </video>
+
+   <div class="video-player-controls">
+      <div class="video-player-controls-play">
+         <img src={`${base}icons/play.png`} alt="play video icon" />
+      </div>
+   </div>
+</div>
+
+<style>
+   .video-player-container {
+      width: fit-content;
+      height: fit-content;
+      border-radius: var(--rounded-base);
+      position: relative;
+      overflow: hidden;
+
+      .video-player {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         object-position: center;
+         overflow: hidden;
+      }
+
+      .video-player-controls {
+         width: 100%;
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         position: absolute;
+         top: 0;
+         left: 0;
+         transition: var(--transitions);
+         background-color: #22222244;
+
+         .video-player-controls-play {
+            width: 72px;
+            height: 72px;
+            border-radius: var(--rounded-base);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: var(--background-color);
+
+            img {
+               width: 40px;
+               transition: var(--transitions);
+
+               &:hover {
+                  transform: scale(1.1);
+               }
+            }
+         }
+      }
+   }
+
+   .video-player-container.is-playing {
+      .video-player-controls {
+         opacity: 0;
+         pointer-events: none;
+      }
+   }
+</style>
+
+<script>
+   function initVideoPlayers() {
+      const containers = document.querySelectorAll("[data-video-player]");
+
+      containers.forEach((container) => {
+         const video = container.querySelector("video") as HTMLVideoElement;
+         const playBtn = container.querySelector(".video-player-controls-play");
+
+         if (!video || !playBtn) return;
+
+         const togglePlay = () => {
+            if (video.paused) {
+               video.play();
+               container.classList.add("is-playing");
+            } else {
+               video.pause();
+               container.classList.remove("is-playing");
+            }
+         };
+
+         playBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            togglePlay();
+         });
+
+         video.addEventListener("click", togglePlay);
+
+         video.addEventListener("ended", () => {
+            container.classList.remove("is-playing");
+         });
+      });
+   }
+
+   initVideoPlayers();
+</script>
