@@ -1,8 +1,7 @@
 ---
-import { base } from "astro:config/server";
-
 import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
+import VideoPlayer from "../ui/VideoPlayer.astro";
 
 interface Props {
    videoFile?: string;
@@ -15,15 +14,7 @@ const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
 ---
 
 <div class="review-card">
-   {
-      videoFile ? (
-         <video controls>
-            <source src={`${base}videos/${videoFile}`} type="video/mp4" />
-         </video>
-      ) : (
-         <Text>"{review}"</Text>
-      )
-   }
+   {videoFile ? <VideoPlayer videoFile={videoFile} width="100%" height="200px" /> : <Text>"{review}"</Text>}
 
    <div>
       <Title type="h6">{reviewerName}</Title>
@@ -34,24 +25,17 @@ const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
 <style>
    .review-card {
       width: 340px;
-      aspect-ratio: 1.25/1;
+      height: fit-content;
+      min-height: 300px;
       padding: var(--gap);
       border-radius: var(--rounded-base);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
+      gap: var(--gap-cards);
       flex-shrink: 0;
       background-color: var(--background-color);
-
-      video {
-         width: 100%;
-         aspect-ratio: 16/9;
-         border-radius: var(--rounded-base);
-         object-fit: cover;
-         object-position: center;
-         overflow: hidden;
-      }
 
       p {
          font-size: 18px;
@@ -70,12 +54,7 @@ const { videoFile, review, reviewerName, reviewerStatus } = Astro.props;
    @media screen and (min-width: 1280px) {
       .review-card {
          width: 415px;
-         aspect-ratio: 16/12;
          padding: calc(var(--gap-cards) * 0.75);
-
-         video {
-            aspect-ratio: 16/8;
-         }
       }
    }
 </style>
