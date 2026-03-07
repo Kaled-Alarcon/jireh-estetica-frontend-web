@@ -3,6 +3,7 @@ import { base } from "astro:config/server";
 
 import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
+import VideoPlayer from "../ui/VideoPlayer.astro";
 
 interface Props {
    videoFile?: string;
@@ -19,14 +20,7 @@ const imageUrl = `${base}images/${imageFile}`;
 
 <div class="our-courses-card">
    <div class="our-courses-card-source">
-      {
-         videoFile && (
-            <video controls>
-               <source src={`${base}videos/${videoFile}`} type="video/mp4" />
-               Tu navegador no acepta videos.
-            </video>
-         )
-      }
+      {videoFile && <VideoPlayer videoFile={videoFile} width="100%" height="240px" />}
 
       {imageFile && <div style={`background-image: url(${imageUrl});`} />}
    </div>
