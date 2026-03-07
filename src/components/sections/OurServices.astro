@@ -1,0 +1,64 @@
+---
+import ServiceCard from "../cards/ServiceCard.astro";
+---
+
+<section id="our-services">
+   <div class="auto-margin">
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+      <ServiceCard
+         title="Nombre del servicio"
+         description="Descripción breve del servicio: Duración, temas, dónde, especialización."
+         price="45.000"
+      />
+   </div>
+</section>
+
+<style>
+   #our-services {
+      height: fit-content;
+      padding-block: var(--gap-sections);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-color);
+
+      .auto-margin {
+         display: grid;
+         grid-template-rows: repeat(auto, 1fr);
+         grid-template-columns: repeat(1, 1fr);
+         gap: var(--gap-cards);
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      #our-services {
+         .auto-margin {
+            grid-template-columns: repeat(3, 1fr);
+         }
+      }
+   }
+</style>
