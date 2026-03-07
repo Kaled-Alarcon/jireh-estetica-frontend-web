@@ -3,6 +3,7 @@ import { base } from "astro:config/server";
 
 import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
+import VideoPlayer from "../ui/VideoPlayer.astro";
 
 interface Props {
    videoFile?: string;
@@ -17,14 +18,7 @@ const { videoFile, imageFile, title, description, price } = Astro.props;
 
 <div class="service-card">
    <div class="service-card-source">
-      {
-         videoFile && (
-            <video controls>
-               <source src={`${base}videos/${videoFile}`} type="video/mp4" />
-               Tu navegador no acepta videos.
-            </video>
-         )
-      }
+      {videoFile && <VideoPlayer videoFile={videoFile} width="100%" height="240px" />}
 
       {imageFile && <div style={`background-image: url(${base}images/${imageFile});`} />}
    </div>
@@ -48,15 +42,6 @@ const { videoFile, imageFile, title, description, price } = Astro.props;
          border-radius: var(--rounded-base);
          overflow: hidden;
          background-color: #444;
-
-         video {
-            width: 100%;
-            height: 100%;
-            border-radius: var(--rounded-base);
-            display: block;
-            object-fit: cover;
-            object-position: top;
-         }
 
          div {
             width: 100%;
