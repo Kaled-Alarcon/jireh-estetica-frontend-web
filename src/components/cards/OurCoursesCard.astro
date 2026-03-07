@@ -1,0 +1,91 @@
+---
+import { base } from "astro:config/server";
+
+import Title from "../ui/Title.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+   videoFile?: string;
+   imageFile?: string;
+   title: string;
+   instructorName: string;
+   description: string;
+}
+
+const { videoFile, imageFile, title, description, instructorName } = Astro.props;
+
+const imageUrl = `${base}images/${imageFile}`;
+---
+
+<div class="our-courses-card">
+   <div class="our-courses-card-source">
+      {
+         videoFile && (
+            <video controls>
+               <source src={`${base}videos/${videoFile}`} type="video/mp4" />
+               Tu navegador no acepta videos.
+            </video>
+         )
+      }
+
+      {imageFile && <div style={`background-image: url(${imageUrl});`} />}
+   </div>
+   <Title type="h4">{title}</Title>
+   <Title type="h6">Impartido por: <span>{instructorName}</span></Title>
+   <Text>{description}</Text>
+</div>
+
+<style>
+   .our-courses-card {
+      height: 380px;
+      border-radius: var(--rounded-base);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .our-courses-card-source {
+         width: 100%;
+         aspect-ratio: 16/9;
+         border-radius: var(--rounded-base);
+         overflow: hidden;
+         background-color: #444;
+
+         video {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--rounded-base);
+            display: block;
+            object-fit: cover;
+            object-position: top;
+         }
+
+         div {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+         }
+      }
+
+      h6 {
+         span {
+            color: var(--primary-color);
+         }
+      }
+
+      h4,
+      p,
+      h6 {
+         margin-left: var(--gap);
+      }
+   }
+
+   @media screen and (min-width: 1280px) {
+      .our-courses-card {
+         height: 400px;
+         justify-content: space-around;
+      }
+   }
+</style>
