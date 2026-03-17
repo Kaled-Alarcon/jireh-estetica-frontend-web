@@ -3,9 +3,10 @@ import { base } from "astro:config/server";
 
 import Title from "../ui/Title.astro";
 import Text from "../ui/Text.astro";
+import VideoPlayer from "../ui/VideoPlayer.astro";
 
 interface Props {
-   instructorImageFile: string;
+   instructorVideoFile: string;
    instructor: {
       name: string;
       job: string;
@@ -13,13 +14,12 @@ interface Props {
    };
 }
 
-const { instructorImageFile, instructor } = Astro.props;
-
-const imageUrl = `${base}images/${instructorImageFile}`;
+const { instructorVideoFile, instructor } = Astro.props;
 ---
 
 <div class="your-instructors-card">
-   <div class="your-instructors-card-image" style={`background-image: url(${imageUrl});`}></div>
+   <VideoPlayer videoFile={instructorVideoFile} width="auto" height="400px" />
+   <!-- <div class="your-instructors-card-image" style={`background-image: url(${videoUrl});`}></div> -->
    <div class="your-instructors-card-text">
       <Title type="h5">{instructor.name}</Title>
       <Title type="h6">{instructor.job}</Title>
@@ -29,20 +29,12 @@ const imageUrl = `${base}images/${instructorImageFile}`;
 
 <style>
    .your-instructors-card {
-      height: 560px;
+      height: 600px;
       padding: var(--gap);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: stretch;
-
-      .your-instructors-card-image {
-         height: 360px;
-         border-radius: var(--rounded-base);
-         background-size: cover;
-         background-position: center;
-         background-repeat: no-repeat;
-      }
 
       .your-instructors-card-text {
          display: flex;
