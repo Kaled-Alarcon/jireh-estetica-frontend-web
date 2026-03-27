@@ -19,7 +19,6 @@ const { instructorVideoFile, instructor } = Astro.props;
 
 <div class="your-instructors-card">
    <VideoPlayer videoFile={instructorVideoFile} width="auto" height="400px" />
-   <!-- <div class="your-instructors-card-image" style={`background-image: url(${videoUrl});`}></div> -->
    <div class="your-instructors-card-text">
       <Title type="h5">{instructor.name}</Title>
       <Title type="h6">{instructor.job}</Title>
@@ -29,12 +28,13 @@ const { instructorVideoFile, instructor } = Astro.props;
 
 <style>
    .your-instructors-card {
-      height: 600px;
+      height: fit-content;
       padding: var(--gap);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: stretch;
+      justify-content: flex-start;
+      gap: var(--gap-cards);
 
       .your-instructors-card-text {
          display: flex;
